@@ -1,4 +1,5 @@
-import mathModel
+import mathPack
+import calcPanel
 
 Ia = float(input('Солнечная радиация: '))
 Ta = float(input('Температура воздуха: '))
@@ -12,15 +13,15 @@ k1 = 0.00038
 Pan = []
 
 # Расчет для одной панели
-Tpv = mathModel.workTempFoto(Ta, Ia, Vw)
+Tpv = mathPack.workTempFoto(Ta, Ia, Vw)
 print('Tpv = ' + str(Tpv))
-n = mathModel.KPD(nConst, B, Tpv)
+n = mathPack.KPD(nConst, B, Tpv)
 print('КПД = ' + str(n))
-Iph = mathModel.photoCurrent(Ia, Isc, Tpv, k1)
+Iph = mathPack.photoCurrent(Ia, Isc, Tpv, k1)
 print('Ipv = ' + str(Iph))
-Ppv = mathModel.outCapacity(Ia, n, A, kl)
+Ppv = mathPack.outCapacity(Ia, n, A, kl)
 print('Ppv = ' + str(Ppv))
-Upv = mathModel.outVoltage(Ppv, Iph)
+Upv = mathPack.outVoltage(Ppv, Iph)
 
 Pan.append(calcPanel.addPanel(Upv))
 
